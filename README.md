@@ -43,3 +43,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 4. Run prisma generate to generate the Prisma Client. You can then start querying your database.
 
 - npx prisma db push
+
+- npx prisma migrate dev
