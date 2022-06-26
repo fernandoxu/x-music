@@ -35,7 +35,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       })
     );
 
-    res.json(user);
+    res.json({ ...user, password: undefined });
   } else {
     res.status(401);
     res.json({
