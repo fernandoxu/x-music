@@ -7,3 +7,5 @@ const auth = (
     password: string;
   }
 ) => fetcher(`/${mode}`, body);
+
+export { auth };
