@@ -3,18 +3,13 @@ import jwt from 'jsonwebtoken';
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../lib/prisma';
+import { User } from '@prisma/client';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const salt = bcrypt.genSaltSync();
   const { email, password } = req.body;
 
-  let user: {
-    email: any;
-    id: any;
-    createdAt?: Date;
-    updatedAt?: Date;
-    password?: string;
-  };
+  let user: User;
 
   try {
     user = await prisma.user.create({
