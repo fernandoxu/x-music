@@ -53,3 +53,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 初始化种子数据 参考： <https://www.prisma.io/docs/guides/database/seed-database>
 
 #### npx prisma studio
+
+#### npx prisma migrate reset

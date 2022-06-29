@@ -23,7 +23,7 @@ const validateRoute =
     let user: User;
 
     try {
-      const { id } = jwt.verify(token, 'x-music-app-secret') as User;
+      const { id } = jwt.verify(token, 'x-music-app-secret') as Partial<User>;
 
       user = await prisma.user.findUnique({
         where: { id },
@@ -38,11 +38,5 @@ const validateRoute =
 
     return handler(req, res, user);
   };
-
-const validateToken = (token: string) => {
-  const user = jwt.verify(token, 'x-music-app-secret');
-
-  return user;
-};
 
 export { validateRoute };

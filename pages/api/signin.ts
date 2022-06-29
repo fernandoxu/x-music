@@ -15,7 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const token = jwt.sign(
       {
         email: user.email,
-        userId: user.id,
+        id: user.id,
         time: Date.now(),
       },
       'x-music-app-secret',
