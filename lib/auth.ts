@@ -39,4 +39,7 @@ const validateRoute =
     return handler(req, res, user);
   };
 
-export { validateRoute };
+const validateToken = (token: string) =>
+  jwt.verify(token, 'x-music-app-secret');
+
+export { validateRoute, validateToken };

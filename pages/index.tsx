@@ -1,11 +1,21 @@
 import { Box, Flex, Text } from '@chakra-ui/layout';
 import { Image } from '@chakra-ui/react';
+import { Artist } from '@prisma/client';
+import { InferGetServerSidePropsType } from 'next';
 import GradientLayout from '../components/gradientLayout';
-import { useArtists, useMe } from '../lib/hooks';
+import { useMe } from '../lib/hooks';
+import prisma from '../lib/prisma';
 
-const Home = () => {
+export const getServerSideProps = async () => {
+  const artists: Artist[] = await prisma.artist.findMany({});
+
+  return { props: { artists } };
+};
+
+const Home = ({
+  artists,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { user } = useMe();
-  const { artists } = useArtists();
 
   return (
     <GradientLayout
@@ -13,7 +23,7 @@ const Home = () => {
       color='purple'
       subtitle='profile'
       title={`${user?.firstName ?? ''} ${user?.lastName ?? ''}`}
-      description='15 public playlists'
+      description={`${user?.playlistsCount ?? 0} public playlists`}
       image='https://avatars.githubusercontent.com/u/20871468?v=4'
     >
       <Box color='white' paddingX='40px'>
@@ -43,11 +53,5 @@ const Home = () => {
     </GradientLayout>
   );
 };
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const artists = await prisma.artist.findMany({});
-
-//   return { props: { artists } };
-// };
 
 export default Home;
