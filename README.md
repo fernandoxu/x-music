@@ -55,3 +55,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 #### npx prisma studio
 
 #### npx prisma migrate reset
+
+### deploy
+
+- npx prisma generate && npx prisma migrate deploy && next build
