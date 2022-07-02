@@ -70,7 +70,7 @@ const Player: FC<{ songs: SongState[]; activeSong: SongState }> = ({
     repeatRef.current = repeat;
   }, [repeat]);
 
-  const setPlayState = (value) => {
+  const setPlayState = (value: boolean) => {
     setPlaying(value);
   };
 
