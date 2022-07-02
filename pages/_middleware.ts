@@ -5,8 +5,7 @@ const signedPages = ['/', '/playlist', '/library'];
 
 export default function middleware(req: NextRequest) {
   if (signedPages.find((p) => p === req.nextUrl.pathname)) {
-    const { X_ACCESS_TOKEN: token } = req.cookies;
 
-    if (!token) return NextResponse.rewrite(new URL('/signin', req.url));
+    if (!req.cookies.get('X_ACCESS_TOKEN')) return NextResponse.rewrite(new URL('/signin', req.url));
   }
 }
