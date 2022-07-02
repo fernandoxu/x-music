@@ -1,16 +1,22 @@
 import create from 'zustand';
-import { Song } from '@prisma/client';
+import { Song, Artist } from '@prisma/client';
+
+export interface SongState extends Song {
+  artist: Artist;
+}
 
 interface SongsState {
-  activeSongs: Song[];
-  activeSong: Song | null;
+  activeSongs: SongState[];
+  activeSong: SongState;
+  changeActiveSongs: (songs: SongState[]) => void;
+  changeActiveSong: (song: SongState) => void;
 }
 
 const useStore = create<SongsState>((set) => ({
   activeSongs: [],
-  activeSong: null,
-  changeActiveSongs: (songs: Song[]) => set((state) => ({ ...state, songs })),
-  changeActiveSong: (song: Song) => set((state) => ({ ...state, song })),
+  activeSong: undefined,
+  changeActiveSongs: (activeSongs) => set((state) => ({ activeSongs })),
+  changeActiveSong: (activeSong) => set((state) => ({ activeSong })),
 }));
 
 export default useStore;

@@ -4,9 +4,19 @@ import { BsFillPlayFill } from 'react-icons/bs';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { formatDate, formatTime } from '../lib/formatters';
 import { FC } from 'react';
-import { Song } from '@prisma/client';
+import useStore from '../lib/store';
 
-const SongTable: FC<{ songs: Song[] }> = ({ songs }) => {
+import type { SongState } from '../lib/store';
+
+const SongTable: FC<{ songs: SongState[] }> = ({ songs }) => {
+  const playSongs = useStore((state) => state.changeActiveSongs);
+  const setActiveSong = useStore((state) => state.changeActiveSong);
+
+  const handlePlay = (activeSong?: SongState) => {
+    setActiveSong(activeSong ?? songs[0]);
+    playSongs(songs);
+  };
+
   return (
     <Box bg='transparent' color='white'>
       <Box padding='10px' marginBottom='20px'>
@@ -17,6 +27,7 @@ const SongTable: FC<{ songs: Song[] }> = ({ songs }) => {
             colorScheme='green'
             size='lg'
             isRound
+            onClick={() => handlePlay()}
           />
         </Box>
         <Table variant='unstyled'>
@@ -40,7 +51,8 @@ const SongTable: FC<{ songs: Song[] }> = ({ songs }) => {
                   },
                 }}
                 key={song.id}
-                cursor='cursor'
+                cursor='pointer'
+                onClick={() => handlePlay(song)}
               >
                 <Td>{i + 1}</Td>
                 <Td>{song.name}</Td>

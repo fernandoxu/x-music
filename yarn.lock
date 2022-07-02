@@ -1412,6 +1412,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/howler@npm:*":
+  version: 2.2.7
+  resolution: "@types/howler@npm:2.2.7"
+  checksum: e9d6723f946a7526c8562436c06ad64d55f63a0573bfbf08c776e3785ab520a3138da84058f280b0fe7d8a819af77af3dd62d88f873a316d3723dc2ad575aa0d
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.9":
   version: 7.0.11
   resolution: "@types/json-schema@npm:7.0.11"
@@ -1476,6 +1483,27 @@ __metadata:
   version: 15.7.5
   resolution: "@types/prop-types@npm:15.7.5"
   checksum: 5b43b8b15415e1f298243165f1d44390403bb2bd42e662bca3b5b5633fdd39c938e91b7fce3a9483699db0f7a715d08cef220c121f723a634972fdf596aec980
+  languageName: node
+  linkType: hard
+
+"@types/react-howler@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "@types/react-howler@npm:5.2.0"
+  dependencies:
+    "@types/howler": "*"
+    "@types/react": "*"
+  checksum: 4267021a6a56a8cdb77855384076aa6833873f82ced34695b6a2bcb5d10671eec30a525ff3aade88bdb60fb05ffb3e0093e2776c348755b263a2e66ea33d6015
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*":
+  version: 18.0.14
+  resolution: "@types/react@npm:18.0.14"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 608eb57a383eedc54c79949673e5e8314f6b0c61542bff58721c8c47a18c23e2832e77c656050c2c2c004b62cf25582136c7c56fe1b6263a285c065fae31dbcf
   languageName: node
   linkType: hard
 
@@ -5271,6 +5299,7 @@ __metadata:
     "@types/jsonwebtoken": ^8.5.8
     "@types/node": ^17.0.35
     "@types/react": ^18.0.9
+    "@types/react-howler": ^5.2.0
     "@typescript-eslint/eslint-plugin": ^5.25.0
     "@typescript-eslint/parser": ^5.25.0
     babel-plugin-superjson-next: ^0.4.3
