@@ -2,7 +2,7 @@ import create from 'zustand';
 import { Song, Artist } from '@prisma/client';
 
 export interface SongState extends Song {
-  artist: Artist;
+  artist: Partial<Artist>;
 }
 
 interface SongsState {
