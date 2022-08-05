@@ -15,7 +15,8 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
     e.preventDefault();
     setIsLoading(true);
 
-    await auth(mode, { email, password });
+    const res = await auth(mode, { email, password });
+
     router.push('/');
   };
 
